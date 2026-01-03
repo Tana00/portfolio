@@ -34,6 +34,7 @@ src/
 │   │   ├── WorkSection.tsx      # Portfolio projects
 │   │   └── ContactSection.tsx   # CTA and contact
 │   └── ui/
+│       ├── CaseStudyModal.tsx      # Reusable case study modal
 │       ├── ProjectCard.tsx      # Reusable project card
 │       ├── ChatWidget.tsx       # AI chat interface
 │       └── SocialIcons.tsx      # Social media icons
@@ -41,27 +42,108 @@ src/
 │   └── portfolio.ts        # Content & configuration
 ├── types/
 │   └── portfolio.ts        # TypeScript interfaces
-├── tailwind.config.ts      # Tailwind configuration
 └── next.config.js          # Next.js configuration
 ```
 
 ## 🎨 Theme Configuration
 
-Custom Tailwind colors defined in `tailwind.config.ts`:
+Custom Tailwind CSS v4 colors defined in `globals.css` using `@theme`:
 
-- **primary**: `#3178c4` (TypeScript blue)
-- **accent-blue**: `#3178c6`
-- **background-dark**: `#121212`
-- **surface-dark**: `#1E1E1E`
-- **text-dim**: `#A1A1AA`
+```css
+@theme {
+  --color-primary: rgb(49 120 196);
+  --color-accent-blue: rgb(49 120 198);
+  --color-background-dark: rgb(18 18 18);
+  --color-surface-dark: rgb(30 30 30);
+  --color-text-dim: rgb(161 161 170);
+}
+```
 
-## 🔧 Installation
+Color values:
+
+- **primary**: `rgb(49 120 196)` - TypeScript blue (#3178c4)
+- **accent-blue**: `rgb(49 120 198)` - Accent color (#3178c6)
+- **background-dark**: `rgb(18 18 18)` - Dark background (#121212)
+- **surface-dark**: `rgb(30 30 30)` - Surface color (#1E1E1E)
+- **text-dim**: `rgb(161 161 170)` - Dimmed text (#A1A1AA)
+
+## ⚙️ Configuration Files
+
+### Tailwind CSS Setup
+
+The project uses **Tailwind CSS v4** with `@tailwindcss/postcss` plugin:
+
+**postcss.config.mjs**:
+
+```javascript
+const config = {
+  plugins: {
+    "@tailwindcss/postcss": {},
+  },
+};
+```
+
+**globals.css**:
+
+- Uses `@import "tailwindcss"` for Tailwind v4 setup
+- Defines custom colors via `@theme` block
+- Includes custom animations (marquee, swiss-grid)
+- Custom utility classes for scrollbar styling
+
+**tailwind.config.ts**:
+
+- Defines content paths for scanning components
+- Dark mode enabled with `"class"` strategy
+- Custom color palette using RGB values for opacity support
+- Extended animations and border radius
+
+### Next.js Configuration
+
+**layout.tsx**:
+
+- Applied `className="dark"` on `<html>` element to enable dark mode
+- Uses Inter font via `next/font` with variable `--font-inter`
+- Material Icons stylesheet loaded from Google Fonts
+- Comprehensive metadata with Open Graph and Twitter cards
+
+**page.tsx**:
+
+- Implements App Router structure
+- Composes all section components
+- Fixed ChatWidget positioned at bottom-right corner
+
+## 🔧 Installation & Setup
+
+### Prerequisites
+
+- Node.js 18+
+- npm or yarn
+
+### Installation
 
 ```bash
 npm install
 ```
 
+This installs all dependencies including:
+
+- Next.js 16.1.1 with Turbopack
+- Tailwind CSS v4 with @tailwindcss/postcss
+- TypeScript and development tools
+- Framer Motion for animations
+
+### Environment Setup
+
+No additional environment variables are required. All configuration is done through:
+
+- `tailwind.config.ts` - Tailwind customization
+- `src/app/globals.css` - Global styles and theme variables
+- `postcss.config.mjs` - PostCSS plugins
+- `next.config.js` - Next.js configuration
+
 ## 🏃 Development
+
+Start the development server with hot reload:
 
 ```bash
 npm run dev
@@ -69,47 +151,80 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-## 📦 Build
+The app will automatically reload when you save changes thanks to Next.js fast refresh.
+
+## 📦 Build & Production
+
+Build for production:
 
 ```bash
 npm run build
+```
+
+Start production server:
+
+```bash
 npm start
 ```
 
+The build process:
+
+1. Compiles TypeScript
+2. Bundles React components
+3. Optimizes CSS with Tailwind
+4. Generates static pages
+5. Optimizes images
+
 ## ✅ Type Checking
+
+Run TypeScript type checking without building:
 
 ```bash
 npm run type-check
 ```
 
+## 🔍 Linting
+
+Run ESLint to check code quality:
+
+```bash
+npm run lint
+```
+
 ## 🎯 Key Components
 
 ### HeroSection
+
 - Animated hero with gradient text
 - Call-to-action buttons
 - Smooth scroll animations using Framer Motion
 
 ### SkillsSection
+
 - Infinite marquee carousel
 - Hover interactions
 - Grayscale toggle effect
 
 ### ImpactSection
+
 - Stat cards with icons
 - Grid layout (responsive)
 - Intersection observer animations
 
 ### WorkSection
+
 - Alternating project layout
 - Next.js Image optimization
 - Project tags and links
 
 ### ContactSection
+
 - Email CTA
 - Animated heading
 - SEO optimized
 
 ### ChatWidget
+
 - Collapsible AI chat interface
 - Suggested questions
 - Smooth open/close animations
@@ -195,6 +310,7 @@ Or connect your GitHub repository to Vercel for automatic deployments.
 ### Deploy to Other Platforms
 
 Build the application:
+
 ```bash
 npm run build
 npm start
@@ -228,19 +344,19 @@ projects: [
 
 ### Change Theme Colors
 
-Edit `tailwind.config.ts`:
+Edit the `@theme` block in `src/app/globals.css`:
 
-```typescript
-theme: {
-  extend: {
-    colors: {
-      primary: '#YOUR_COLOR',
-      'accent-blue': '#YOUR_COLOR',
-      // ... other colors
-    },
-  },
+```css
+@theme {
+  --color-primary: rgb(49 120 196);
+  --color-accent-blue: rgb(49 120 198);
+  --color-background-dark: rgb(18 18 18);
+  --color-surface-dark: rgb(30 30 30);
+  --color-text-dim: rgb(161 161 170);
 }
 ```
+
+**Note**: Tailwind CSS v4 requires RGB values instead of hex colors. Convert hex to RGB using: `rgb(R G B)` where R, G, B are 0-255 values.
 
 ### Add New Sections
 
@@ -260,24 +376,46 @@ All components are reusable and accept props for customization:
 
 ## 🛠 Tech Stack
 
-| Tool | Version | Purpose |
-|------|---------|---------|
-| Next.js | 15.1.3 | React framework with App Router |
-| TypeScript | 5.5.4 | Type safety and developer experience |
-| Tailwind CSS | 3.4.3 | Utility-first CSS framework |
-| Framer Motion | 11.15.0 | Smooth animations and transitions |
-| React | 18.3.1 | UI library |
+| Tool                 | Version  | Purpose                                            |
+| -------------------- | -------- | -------------------------------------------------- |
+| Next.js              | 16.1.1   | React framework with App Router & Turbopack        |
+| TypeScript           | 5.5.4    | Type safety and developer experience               |
+| Tailwind CSS         | 4.x      | Utility-first CSS framework with v4 @theme support |
+| @tailwindcss/postcss | Latest   | PostCSS plugin for Tailwind CSS v4                 |
+| Framer Motion        | 11.15.0  | Smooth animations and transitions                  |
+| React                | 18.3.1   | UI library                                         |
+| next/font            | Included | Optimized font loading (Inter)                     |
+| next/image           | Included | Optimized image component                          |
+
+## 📦 Dependencies
+
+**Production**:
+
+- react, react-dom - UI framework
+- next - React framework
+- framer-motion - Animation library
+
+**Development**:
+
+- TypeScript - Type checking
+- Tailwind CSS - Styling
+- @tailwindcss/postcss - PostCSS plugin for Tailwind v4
+- ESLint - Code linting
+- Autoprefixer - CSS vendor prefixes
+- PostCSS - CSS transformation
 
 ## 📚 Component Reference
 
 ### Layout Components
 
 **Navbar** - Fixed navigation with logo, links, and resume button
+
 ```typescript
 <Navbar /> // No props required, uses data from portfolio.ts
 ```
 
 **Footer** - Footer with copyright and social links
+
 ```typescript
 <Footer /> // No props required, uses data from portfolio.ts
 ```
@@ -285,26 +423,31 @@ All components are reusable and accept props for customization:
 ### Section Components
 
 **HeroSection** - Hero banner with CTA buttons
+
 ```typescript
 <HeroSection /> // Uses hero data from portfolio.ts
 ```
 
 **SkillsSection** - Animated marquee of tech skills
+
 ```typescript
 <SkillsSection /> // Uses skills array from portfolio.ts
 ```
 
 **ImpactSection** - Grid of impact metrics and stats
+
 ```typescript
 <ImpactSection /> // Uses impact array from portfolio.ts
 ```
 
 **WorkSection** - Portfolio projects showcase
+
 ```typescript
 <WorkSection /> // Uses projects array from portfolio.ts
 ```
 
 **ContactSection** - CTA for getting in touch
+
 ```typescript
 <ContactSection /> // Uses contact data from portfolio.ts
 ```
@@ -312,11 +455,13 @@ All components are reusable and accept props for customization:
 ### UI Components
 
 **ProjectCard** - Reusable project showcase card
+
 ```typescript
 <ProjectCard project={projectData} imagePosition="left" />
 ```
 
 **ChatWidget** - Collapsible AI chat interface
+
 ```typescript
 <ChatWidget /> // Uses chat data from portfolio.ts
 ```
