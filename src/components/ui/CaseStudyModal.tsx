@@ -1,13 +1,26 @@
 "use client";
 
-import { useEffect, useId } from "react";
-import Image from "next/image";
+import { useState, useEffect, useId } from "react";
+import {
+  Braces,
+  Cloud,
+  Database,
+  ExternalLink,
+  LayoutDashboard,
+  MonitorSmartphone,
+  Network,
+  Server,
+  Workflow,
+  X,
+} from "lucide-react";
+import { Icon } from "./Icon";
+import { IconName } from "../Icons";
 
-type TechStackItem = { icon: string; label: string };
+type TechStackItem = { icon: IconName; label: string };
 type Achievement = {
   value: string;
   label: string;
-  trendIcon?: "arrow_upward" | "arrow_downward";
+  trendIcon?: IconName;
   trendColorClass?: string;
 };
 
@@ -41,6 +54,7 @@ type Props = {
 
 export function CaseStudyModal({ open, onClose, data }: Props) {
   const titleId = useId();
+  const [projectView, setProjectView] = useState<"ui" | "architecture">("ui");
 
   useEffect(() => {
     if (!open) return;
@@ -61,8 +75,6 @@ export function CaseStudyModal({ open, onClose, data }: Props) {
 
   if (!open || !data) return null;
 
-  console.log("CaseStudyModal data:", data);
-
   return (
     <div
       className="fixed inset-0 z-100 flex items-center justify-center bg-background-dark/60 backdrop-blur-md p-4"
@@ -73,24 +85,132 @@ export function CaseStudyModal({ open, onClose, data }: Props) {
         if (e.target === e.currentTarget) onClose();
       }}
     >
-      <div className="relative w-full max-w-6xl overflow-hidden rounded-2xl bg-background-dark/90 shadow-2xl ring-1 ring-white/10 lg:flex lg:h-[85vh]">
+      <div className="relative w-full max-w-6xl overflow-hidden rounded-2xl bg-background-dark/90 shadow-2xl ring-1 ring-white/10 lg:flex lg:h-[90vh]">
         {/* LEFT */}
         <div className="relative w-full overflow-y-auto bg-black/20 p-6 lg:w-3/5 border-r border-white/5">
           <div className="flex flex-col gap-6">
-            <div className="relative w-full overflow-hidden rounded-xl border border-white/10 shadow-lg">
-              <div
-                className="aspect-video w-full bg-cover bg-center"
-                style={{ backgroundImage: `url('${data.heroImageUrl}')` }}
-              />
-              <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent" />
-              {data.heroBadgeLabel ? (
-                <div className="absolute bottom-4 left-4">
-                  <span className="rounded bg-black/50 px-2 py-1 text-xs font-medium text-white backdrop-blur-sm border border-white/10">
-                    {data.heroBadgeLabel}
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <span className="text-xs font-bold uppercase tracking-wider text-text-dim">
+                  Project View
+                </span>
+              </div>
+              <div className="flex items-center rounded-lg border border-white/10 bg-surface-dark p-1">
+                <button
+                  onClick={() => setProjectView("ui")}
+                  className={`flex items-center gap-2 rounded px-3 py-1.5 text-xs font-medium text-white ${
+                    projectView === "ui" ? "bg-white/10" : "bg-transparent"
+                  } transition-colors shadow-sm cursor-pointer`}
+                >
+                  <LayoutDashboard className="w-3.5 h-3.5" />
+                  UI
+                </button>
+                <button
+                  onClick={() => setProjectView("architecture")}
+                  className={`flex items-center gap-2 rounded px-3 py-1.5 text-xs ${
+                    projectView === "architecture"
+                      ? "bg-white/10"
+                      : "bg-transparent"
+                  } font-medium text-text-dim hover:text-white transition-colors cursor-pointer`}
+                >
+                  <Network className="w-3.5 h-3.5" />
+                  Architecture
+                </button>
+              </div>
+            </div>
+            {projectView === "ui" ? (
+              <div className="relative w-full overflow-hidden rounded-xl border border-white/10 shadow-lg">
+                <div
+                  className="aspect-video w-full bg-cover bg-center"
+                  style={{ backgroundImage: `url('${data.heroImageUrl}')` }}
+                />
+                <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent" />
+                {data.heroBadgeLabel ? (
+                  <div className="absolute bottom-4 left-4">
+                    <span className="rounded bg-black/50 px-2 py-1 text-xs font-medium text-white backdrop-blur-sm border border-white/10">
+                      {data.heroBadgeLabel}
+                    </span>
+                  </div>
+                ) : null}
+              </div>
+            ) : (
+              <div className="aspect-video w-full bg-[#1A1A1A] relative swiss-grid p-8 flex items-center justify-center">
+                <div className="absolute top-4 left-4">
+                  <span className="rounded bg-primary/20 px-2 py-1 text-xs font-mono text-primary border border-primary/20 flex items-center gap-2">
+                    <Workflow size={18} strokeWidth={2.75} />
+                    System Architecture
                   </span>
                 </div>
-              ) : null}
-            </div>
+                <div className="relative flex w-full max-w-2xl items-center justify-between gap-4">
+                  <div className="flex flex-col items-center gap-4 relative group/client">
+                    <div className="h-24 w-40 rounded-lg border border-white/10 bg-surface-dark p-3 shadow-lg flex flex-col items-center justify-center gap-2 relative z-10 hover:border-primary/50 transition-colors cursor-help">
+                      <div className="flex items-center gap-2">
+                        <MonitorSmartphone className="w-6 h-6 text-blue-400" />
+                      </div>
+                      <span className="text-xs font-bold text-white">
+                        Client (React)
+                      </span>
+                      <span className="text-[10px] text-text-dim">
+                        Next.js Frontend
+                      </span>
+                      <div className="absolute -top-16 left-1/2 -translate-x-1/2 w-48 rounded bg-black border border-white/10 p-2 text-[10px] text-text-dim opacity-0 group-hover/client:opacity-100 transition-opacity pointer-events-none z-20 shadow-xl">
+                        <span className="block font-bold text-white mb-1">
+                          State Management Strategy
+                        </span>
+                        Redux toolkit for global state, local component state
+                        for UI interactions.
+                      </div>
+                    </div>
+                  </div>
+                  <div className="flex-1 h-0.5 bg-linear-to-r from-blue-500/50 to-purple-500/50 relative">
+                    <div className="absolute -top-3 left-1/2 -translate-x-1/2 text-[10px] text-text-dim bg-[#1A1A1A] px-1 font-mono">
+                      JSON/HTTPS
+                    </div>
+                    <div className="absolute top-1/2 left-0 h-1.5 w-1.5 -translate-y-1/2 rounded-full bg-blue-400 animate-[ping_3s_linear_infinite]"></div>
+                  </div>
+                  <div className="flex flex-col items-center gap-4 relative group/api">
+                    <div className="h-24 w-40 rounded-lg border border-white/10 bg-surface-dark p-3 shadow-lg flex flex-col items-center justify-center gap-2 relative z-10 hover:border-purple-500/50 transition-colors cursor-help">
+                      <div className="flex items-center gap-2">
+                        <Braces className="w-5 h-5 text-purple-400" />
+                      </div>
+                      <span className="text-xs font-bold text-white">
+                        API Gateway
+                      </span>
+                      <span className="text-[10px] text-text-dim">
+                        RESTful Services
+                      </span>
+                      <div className="absolute -top-16 left-1/2 -translate-x-1/2 w-48 rounded bg-black border border-white/10 p-2 text-[10px] text-text-dim opacity-0 group-hover/api:opacity-100 transition-opacity pointer-events-none z-20 shadow-xl">
+                        <span className="block font-bold text-white mb-1">
+                          API Optimization
+                        </span>
+                        Edge caching &amp; rate limiting implemented to handle
+                        high concurrent requests.
+                      </div>
+                    </div>
+                  </div>
+                  <div className="flex-1 h-0.5 bg-linear-to-r from-purple-500/50 to-green-500/50 relative">
+                    <div className="absolute -top-3 left-1/2 -translate-x-1/2 text-[10px] text-text-dim bg-[#1A1A1A] px-1 font-mono">
+                      Query
+                    </div>
+                  </div>
+                  <div className="flex flex-col gap-2">
+                    <div className="h-24 w-40 rounded-lg border border-white/10 bg-surface-dark p-3 shadow-lg flex flex-col items-center justify-center gap-2 relative z-10 border-l-2 border-l-green-500/50">
+                      <div className="flex gap-3 text-text-dim">
+                        <Cloud className="w-5 h-5" />
+                        <Server className="w-5 h-5" />
+                        <Database className="w-5 h-5" />
+                      </div>
+                      <span className="text-xs font-bold text-white">
+                        Cloud Services
+                      </span>
+                      <span className="text-[10px] text-text-dim">
+                        AWS / GCP / Azure
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
 
             <div className="grid grid-cols-2 gap-4">
               {data.images.map((img, index) => (
@@ -134,7 +254,7 @@ export function CaseStudyModal({ open, onClose, data }: Props) {
               type="button"
               aria-label="Close"
             >
-              <span className="material-symbols-outlined">close</span>
+              <X size={26} />
             </button>
           </div>
 
@@ -159,9 +279,7 @@ export function CaseStudyModal({ open, onClose, data }: Props) {
                       key={t.label}
                       className="inline-flex items-center rounded-md border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-white transition-colors hover:bg-white/10"
                     >
-                      <span className="material-symbols-outlined mr-1.5 text-sm">
-                        {t.icon}
-                      </span>
+                      <Icon name={t.icon} className="h-3.5 w-3.5 mr-1.5" />
                       {t.label}
                     </span>
                   ))}
@@ -183,13 +301,14 @@ export function CaseStudyModal({ open, onClose, data }: Props) {
                           {a.value}
                         </span>
                         {a.trendIcon ? (
-                          <span
-                            className={`material-symbols-outlined text-sm ${
-                              a.trendColorClass ?? "text-green-500"
+                          <Icon
+                            name={a.trendIcon}
+                            className={`h-3.5 w-3.5 ${
+                              a.trendIcon === "arrow_up"
+                                ? "text-green-500"
+                                : "text-red-500"
                             }`}
-                          >
-                            {a.trendIcon}
-                          </span>
+                          />
                         ) : null}
                       </div>
                       <p className="mt-1 text-xs text-text-dim">{a.label}</p>
@@ -214,9 +333,7 @@ export function CaseStudyModal({ open, onClose, data }: Props) {
               rel={data.liveUrl ? "noreferrer" : undefined}
             >
               Visit Live Site
-              <span className="material-symbols-outlined text-lg">
-                open_in_new
-              </span>
+              <ExternalLink size={18} />
             </a>
           </div>
         </div>

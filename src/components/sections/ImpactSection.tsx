@@ -2,6 +2,7 @@
 
 import { portfolioData } from "@/data/portfolio";
 import { motion } from "framer-motion";
+import { Icon } from "../ui/Icon";
 
 export function ImpactSection() {
   const { impact } = portfolioData;
@@ -57,9 +58,7 @@ export function ImpactSection() {
             className="group relative overflow-hidden rounded-lg bg-surface-dark p-8 hover:bg-white/5 transition-colors duration-300 border border-white/5"
           >
             <div className="absolute right-4 top-4 text-primary opacity-20 group-hover:opacity-100 transition-opacity">
-              <span className="material-symbols-outlined text-4xl">
-                {stat.icon}
-              </span>
+              <Icon name={stat.icon} className="h-6 w-6" />
             </div>
             <p className="text-sm font-medium text-text-dim">{stat.label}</p>
             <p className="mt-2 text-4xl font-bold text-white group-hover:text-primary transition-colors">

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { ArrowUp, Bot, MessageCircleMore, X } from "lucide-react";
 import { portfolioData } from "@/data/portfolio";
 
 export function ChatWidget() {
@@ -20,10 +21,8 @@ export function ChatWidget() {
             {/* Header */}
             <div className="flex items-center justify-between border-b border-white/5 bg-white/5 px-4 py-3 backdrop-blur-md">
               <div className="flex items-center gap-2">
-                <div className="flex h-6 w-6 items-center justify-center rounded-full bg-gradient-to-tr from-accent-blue to-purple-500">
-                  <span className="material-symbols-outlined text-[14px] text-white">
-                    smart_toy
-                  </span>
+                <div className="flex h-6 w-6 items-center justify-center rounded-full bg-linear-to-tr from-accent-blue to-purple-500">
+                  <Bot size={18} className="text-white" />
                 </div>
                 <span className="text-sm font-semibold text-white">
                   Happiness AI
@@ -34,7 +33,7 @@ export function ChatWidget() {
                 className="text-text-dim hover:text-white transition-colors"
                 aria-label="Close chat"
               >
-                <span className="material-symbols-outlined text-lg">close</span>
+                <X size={26} />
               </button>
             </div>
 
@@ -43,9 +42,7 @@ export function ChatWidget() {
               {/* AI Message */}
               <div className="flex items-start gap-3">
                 <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-surface-dark border border-white/10">
-                  <span className="material-symbols-outlined text-sm text-accent-blue">
-                    smart_toy
-                  </span>
+                  <Bot size={18} className="text-accent-blue absolute" />
                 </div>
                 <div className="flex flex-col gap-1 max-w-[85%]">
                   <span className="text-xs font-medium text-text-dim ml-1">
@@ -72,9 +69,7 @@ export function ChatWidget() {
               {/* AI Response */}
               <div className="flex items-start gap-3">
                 <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-surface-dark border border-white/10">
-                  <span className="material-symbols-outlined text-sm text-accent-blue">
-                    smart_toy
-                  </span>
+                  <Bot size={18} className="text-accent-blue absolute" />
                 </div>
                 <div className="flex flex-col gap-1 max-w-[85%]">
                   <span className="text-xs font-medium text-text-dim ml-1">
@@ -112,9 +107,7 @@ export function ChatWidget() {
                   className="absolute right-2 flex h-7 w-7 items-center justify-center rounded-full bg-accent-blue text-white hover:bg-blue-500 transition-colors"
                   aria-label="Send message"
                 >
-                  <span className="material-symbols-outlined text-[16px]">
-                    arrow_upward
-                  </span>
+                  <ArrowUp size={16} />
                 </button>
               </div>
             </div>
@@ -131,9 +124,7 @@ export function ChatWidget() {
         aria-label="Open AI assistant"
         aria-expanded={isOpen}
       >
-        <span className="material-symbols-outlined text-2xl text-white group-hover:animate-pulse">
-          spark
-        </span>
+        <MessageCircleMore className="text-white" />
         <span className="absolute right-16 rounded bg-surface-dark px-2 py-1 text-xs font-medium text-white opacity-0 transition-opacity group-hover:opacity-100 whitespace-nowrap border border-white/10">
           Ask AI Assistant
         </span>

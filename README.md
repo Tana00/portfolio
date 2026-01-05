@@ -103,7 +103,6 @@ const config = {
 
 - Applied `className="dark"` on `<html>` element to enable dark mode
 - Uses Inter font via `next/font` with variable `--font-inter`
-- Material Icons stylesheet loaded from Google Fonts
 - Comprehensive metadata with Open Graph and Twitter cards
 
 **page.tsx**:

@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { portfolioData } from "@/data/portfolio";
 import { motion } from "framer-motion";
+import { Mail } from "lucide-react";
 
 export function ContactSection() {
   const { heading, subheading, cta, ctaUrl } = portfolioData.contact;
@@ -35,7 +36,7 @@ export function ContactSection() {
               className="flex items-center gap-2 rounded bg-primary px-8 py-4 text-base font-bold text-white shadow-lg hover:bg-blue-600 transition-colors"
               aria-label="Send email"
             >
-              <span className="material-symbols-outlined">mail</span>
+              <Mail className="h-5 w-5" />
               {cta}
             </Link>
           </div>

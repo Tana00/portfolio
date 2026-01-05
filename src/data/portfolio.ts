@@ -36,16 +36,16 @@ export const portfolioData: PortfolioData = {
         label: "GitHub",
         href: "https://github.com/Tana00",
         variant: "secondary",
-        icon: "code_blocks",
+        icon: "github",
       },
     ],
   },
   skills: [
-    { name: "JavaScript", icon: "javascript" },
-    { name: "TypeScript", icon: "data_object" },
-    { name: "React", icon: "view_quilt" },
+    { name: "JavaScript", icon: "code_blocks" },
+    { name: "TypeScript", icon: "braces" },
+    { name: "React", icon: "component" },
     { name: "Next.js", icon: "layers" },
-    { name: "Tailwind", icon: "css" },
+    { name: "Tailwind", icon: "wind" },
     { name: "GraphQL", icon: "database" },
   ],
   impact: [
@@ -68,14 +68,14 @@ export const portfolioData: PortfolioData = {
       label: "Experience",
       value: "5+ Yrs",
       description: "Leading frontend architecture.",
-      icon: "workspace_premium",
+      icon: "award",
     },
     {
       id: "architecture",
       label: "Architecture",
       value: "Scalable",
       description: "Micro-frontends & Monorepos.",
-      icon: "architecture",
+      icon: "scaling",
     },
   ],
   projects: [
@@ -100,32 +100,32 @@ export const portfolioData: PortfolioData = {
           {
             value: "30%",
             label: "Conversion Boost",
-            trendIcon: "arrow_upward",
+            trendIcon: "arrow_up",
           },
           {
             value: "90%",
             label: "Login Error Reduction",
-            trendIcon: "arrow_downward",
+            trendIcon: "arrow_down",
           },
           {
             value: "30%",
             label: "Faster Onboarding",
-            trendIcon: "arrow_upward",
+            trendIcon: "arrow_up",
           },
           {
             value: "20%",
             label: "User Engagement Uplift",
-            trendIcon: "arrow_upward",
+            trendIcon: "arrow_up",
           },
           {
             value: "30%",
             label: "Dev Time Reduced",
-            trendIcon: "arrow_downward",
+            trendIcon: "arrow_down",
           },
           {
             value: "25%",
             label: "Maintainability Improved",
-            trendIcon: "arrow_upward",
+            trendIcon: "arrow_up",
           },
         ],
         images: [
@@ -174,17 +174,17 @@ export const portfolioData: PortfolioData = {
           {
             value: "20%",
             label: "Merchant Productivity Improvement",
-            trendIcon: "arrow_upward",
+            trendIcon: "arrow_up",
           },
           {
             value: "↑",
             label: "Live WebSocket Notifications",
-            trendIcon: "arrow_upward",
+            trendIcon: "arrow_up",
           },
           {
             value: "↑",
             label: "Feature Flags for Safe Rollouts",
-            trendIcon: "arrow_upward",
+            trendIcon: "arrow_up",
           },
         ],
         images: [
@@ -234,17 +234,17 @@ export const portfolioData: PortfolioData = {
           {
             value: "✓",
             label: "Legacy UI Modernized",
-            trendIcon: "arrow_upward",
+            trendIcon: "arrow_down",
           },
           {
             value: "✓",
             label: "CI/CD Pipelines Implemented",
-            trendIcon: "arrow_upward",
+            trendIcon: "arrow_down",
           },
           {
             value: "✓",
             label: "Performance Improved via Lighthouse",
-            trendIcon: "arrow_upward",
+            trendIcon: "arrow_down",
           },
         ],
         images: [
@@ -286,12 +286,12 @@ export const portfolioData: PortfolioData = {
           {
             value: "70%",
             label: "Faster & More Accurate Processing",
-            trendIcon: "arrow_upward",
+            trendIcon: "arrow_up",
           },
           {
             value: "✓",
             label: "Compliance-Driven Automation",
-            trendIcon: "arrow_upward",
+            trendIcon: "arrow_down",
           },
         ],
         images: [
@@ -334,22 +334,22 @@ export const portfolioData: PortfolioData = {
           {
             value: "35%",
             label: "User Engagement Boost",
-            trendIcon: "arrow_upward",
+            trendIcon: "arrow_up",
           },
           {
             value: "25%",
             label: "Traffic Increase",
-            trendIcon: "arrow_upward",
+            trendIcon: "arrow_up",
           },
           {
             value: "40%",
             label: "More Job Applications",
-            trendIcon: "arrow_upward",
+            trendIcon: "arrow_up",
           },
           {
             value: "20%",
             label: "Higher User Satisfaction",
-            trendIcon: "arrow_upward",
+            trendIcon: "arrow_up",
           },
         ],
         images: [
@@ -391,17 +391,17 @@ export const portfolioData: PortfolioData = {
           {
             value: "30%",
             label: "Booking Inquiries Increase",
-            trendIcon: "arrow_upward",
+            trendIcon: "arrow_up",
           },
           {
             value: "15%",
             label: "Higher Conversion Rate",
-            trendIcon: "arrow_upward",
+            trendIcon: "arrow_up",
           },
           {
             value: "40%",
             label: "Organic Traffic Growth",
-            trendIcon: "arrow_upward",
+            trendIcon: "arrow_up",
           },
         ],
         images: [

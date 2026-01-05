@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { Code, Download } from "lucide-react";
 import { portfolioData } from "@/data/portfolio";
 import { SystemStatusDropdown } from "../ui/SystemStatusDropdown";
 
@@ -14,7 +15,7 @@ export function Navbar() {
         {/* Logo and Brand */}
         <div className="flex items-center gap-2">
           <div className="flex h-8 w-8 items-center justify-center rounded bg-primary/20 text-primary">
-            <span className="material-symbols-outlined text-xl">code</span>
+            <Code className="w-5 h-5" />
           </div>
           <span className="font-bold tracking-tight text-white">{name}</span>
         </div>
@@ -44,9 +45,7 @@ export function Navbar() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <span className="material-symbols-outlined text-[18px]">
-              download
-            </span>
+            <Download className="h-4 w-4" />
             <span className="hidden sm:inline">Resume</span>
           </Link>
         </div>

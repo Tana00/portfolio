@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
+import { Gauge, ShieldCheck } from "lucide-react";
 
 type LighthouseData = {
   scores: {
@@ -172,9 +173,7 @@ export function SystemStatusDropdown({ urlToAudit }: { urlToAudit: string }) {
       <div className="absolute right-0 top-full mt-4 w-90 sm:w-105 origin-top-right rounded-xl border border-white/10 bg-background-dark/90 p-6 shadow-2xl backdrop-blur-xl ring-1 ring-white/10 z-[100]">
         <div className="flex items-center justify-between mb-6">
           <div className="flex items-center gap-2">
-            <span className="material-symbols-outlined text-accent-blue text-lg">
-              speed
-            </span>
+            <Gauge size={20} strokeWidth={2.75} className="text-accent-blue" />
             <h3 className="text-sm font-semibold text-white">
               Lighthouse Score
             </h3>
@@ -240,9 +239,11 @@ export function SystemStatusDropdown({ urlToAudit }: { urlToAudit: string }) {
 
             <div className="flex items-center justify-between text-[10px] text-text-dim/60">
               <div className="flex items-center gap-1.5 text-text-dim">
-                <span className="material-symbols-outlined text-[14px] text-accent-blue">
-                  verified_user
-                </span>
+                <ShieldCheck
+                  size={18}
+                  strokeWidth={2.75}
+                  className="text-accent-blue"
+                />
                 <span>Verified by Lighthouse</span>
               </div>
 

@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { Project } from "@/types/portfolio";
 import { motion } from "framer-motion";
+import { ArrowUpRight } from "lucide-react";
 
 interface ProjectCardProps {
   project: Project;
@@ -95,9 +96,7 @@ export function ProjectCard({
             className="text-white hover:text-primary font-medium text-sm flex items-center gap-2 transition-colors"
           >
             View Case Study
-            <span className="material-symbols-outlined text-sm">
-              arrow_outward
-            </span>
+            <ArrowUpRight size={14} strokeWidth={2.75} />
           </button>
         ) : null}
       </motion.div>

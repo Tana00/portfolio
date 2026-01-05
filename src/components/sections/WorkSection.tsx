@@ -36,8 +36,8 @@ export function WorkSection() {
       })),
       images: selected.caseStudy?.images ?? [],
       achievements: selected.caseStudy?.achievements ?? [
-        { value: "30%", label: "Conversion Growth", trendIcon: "arrow_upward" },
-        { value: "90%", label: "Error Reduction", trendIcon: "arrow_downward" },
+        { value: "30%", label: "Conversion Growth", trendIcon: "arrow_up" },
+        { value: "90%", label: "Error Reduction", trendIcon: "arrow_down" },
       ],
 
       closingText: selected.caseStudy?.closingText,

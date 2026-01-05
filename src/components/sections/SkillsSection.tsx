@@ -1,6 +1,7 @@
 "use client";
 
 import { portfolioData } from "@/data/portfolio";
+import { Icon } from "../ui/Icon";
 
 export function SkillsSection() {
   const { skills } = portfolioData;
@@ -19,9 +20,7 @@ export function SkillsSection() {
               key={`skill-1-${skill.name}`}
               className="flex shrink-0 items-center gap-2 opacity-50 grayscale transition-all duration-300 hover:grayscale-0 hover:opacity-100"
             >
-              <span className="material-symbols-outlined text-4xl">
-                {skill.icon}
-              </span>
+              <Icon name={skill.icon} className="h-4 w-4" />
               <span className="text-xl font-bold whitespace-nowrap">
                 {skill.name}
               </span>
@@ -36,9 +35,7 @@ export function SkillsSection() {
               key={`skill-2-${skill.name}`}
               className="flex shrink-0 items-center gap-2 opacity-50 grayscale transition-all duration-300 hover:grayscale-0 hover:opacity-100"
             >
-              <span className="material-symbols-outlined text-4xl">
-                {skill.icon}
-              </span>
+              <Icon name={skill.icon} className="h-4 w-4" />
               <span className="text-xl font-bold whitespace-nowrap">
                 {skill.name}
               </span>

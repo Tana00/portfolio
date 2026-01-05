@@ -64,10 +64,6 @@ export default function RootLayout({
           href="https://fonts.gstatic.com"
           crossOrigin="anonymous"
         />
-        <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
-        />
       </head>
       <body
         className={`${inter.variable} bg-background-dark text-white antialiased selection:bg-primary/30 overflow-x-hidden`}

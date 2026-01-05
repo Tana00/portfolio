@@ -1,6 +1,8 @@
+import type { IconName } from "@/components/Icons";
+
 export interface Skill {
   name: string;
-  icon: string;
+  icon: IconName;
 }
 
 export interface Tag {
@@ -26,7 +28,7 @@ export interface Project {
     achievements?: Array<{
       value: string;
       label: string;
-      trendIcon?: "arrow_upward" | "arrow_downward";
+      trendIcon?: IconName;
     }>;
     images?: Array<{
       src: string;
@@ -43,13 +45,13 @@ export interface StatCard {
   label: string;
   value: string | number;
   description: string;
-  icon: string;
+  icon: IconName;
 }
 
 export interface SocialLink {
   name: string;
   url: string;
-  icon: React.ReactNode;
+  icon: IconName;
 }
 
 export interface PortfolioData {
@@ -78,7 +80,7 @@ export interface PortfolioData {
       label: string;
       href: string;
       variant: "primary" | "secondary";
-      icon?: string;
+      icon?: IconName;
     }>;
   };
   skills: Skill[];

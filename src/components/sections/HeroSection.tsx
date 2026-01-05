@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { portfolioData } from "@/data/portfolio";
+import { Icon } from "../ui/Icon";
 
 export function HeroSection() {
   const { hero } = portfolioData;
@@ -19,7 +20,6 @@ export function HeroSection() {
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
         <div className="max-w-4xl">
-          {/* Backdrop blur is expensive; use solid + opacity instead */}
           <div className="mb-6 inline-flex items-center rounded-full border border-primary/20 bg-primary/10 px-3 py-1 text-xs font-medium text-primary">
             <span className="mr-2 h-1.5 w-1.5 animate-pulse rounded-full bg-primary" />
             {hero.badge}
@@ -43,9 +43,9 @@ export function HeroSection() {
               className="flex items-center gap-2 rounded bg-primary px-6 py-3.5 text-base font-semibold text-white shadow-lg shadow-primary/20 transition-transform hover:-translate-y-[2px]"
             >
               {hero.cta[0].label}
-              <span className="material-symbols-outlined text-sm">
-                {hero.cta[0].icon}
-              </span>
+              {hero.cta[0].icon && (
+                <Icon name={hero.cta[0].icon} className="h-4 w-4" />
+              )}
             </Link>
 
             <a
@@ -54,9 +54,9 @@ export function HeroSection() {
               rel="noreferrer"
               className="flex items-center gap-2 rounded border border-white/10 bg-surface-dark px-6 py-3.5 text-base font-medium text-white transition-colors hover:border-white/20 hover:bg-white/5"
             >
-              <span className="material-symbols-outlined text-xl">
-                {hero.cta[1].icon}
-              </span>
+              {hero.cta[1].icon && (
+                <Icon name={hero.cta[1].icon} className="h-4 w-4" />
+              )}
               {hero.cta[1].label}
             </a>
           </div>
