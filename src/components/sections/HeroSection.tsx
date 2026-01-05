@@ -5,21 +5,29 @@ import { portfolioData } from "@/data/portfolio";
 
 export function HeroSection() {
   const { hero } = portfolioData;
+
   return (
-    <section className="swiss-grid relative flex min-h-[90vh] flex-col justify-center pt-24">
-      <div className="absolute inset-0 bg-gradient-to-b from-background-dark via-transparent to-background-dark" />
-      <div className="pointer-events-none absolute left-1/2 top-1/4 h-64 w-64 -translate-x-1/2 rounded-full bg-primary/20 blur-[100px]" />
+    <section className="relative flex min-h-[90vh] flex-col justify-center pt-24">
+      {/* Grid background is expensive; only enable from sm and up */}
+      <div className="swiss-grid absolute inset-0 hidden sm:block" />
+
+      {/* Overlay gradient */}
+      <div className="absolute inset-0 bg-linear-to-b from-background-dark via-transparent to-background-dark" />
+
+      {/* Glow blob: reduce blur + hide on mobile */}
+      <div className="pointer-events-none absolute left-1/2 top-1/4 hidden h-64 w-64 -translate-x-1/2 rounded-full bg-primary/20 blur-3xl opacity-60 sm:block" />
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
         <div className="max-w-4xl">
-          <div className="mb-6 inline-flex items-center rounded-full border border-primary/20 bg-primary/5 px-3 py-1 text-xs font-medium text-primary backdrop-blur-sm">
+          {/* Backdrop blur is expensive; use solid + opacity instead */}
+          <div className="mb-6 inline-flex items-center rounded-full border border-primary/20 bg-primary/10 px-3 py-1 text-xs font-medium text-primary">
             <span className="mr-2 h-1.5 w-1.5 animate-pulse rounded-full bg-primary" />
             {hero.badge}
           </div>
 
           <h1 className="font-display text-5xl font-black leading-[1.1] tracking-tight text-white sm:text-7xl md:text-8xl">
             {hero.heading}{" "}
-            <span className="bg-gradient-to-r from-primary to-blue-400 bg-clip-text text-transparent">
+            <span className="bg-linear-to-r from-primary to-blue-400 bg-clip-text text-transparent">
               {hero.headingGradient}
             </span>
             {hero.subheading}
