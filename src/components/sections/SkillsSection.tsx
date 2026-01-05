@@ -7,8 +7,8 @@ export function SkillsSection() {
 
   return (
     <div className="w-full border-y border-white/5 bg-background-dark py-10 overflow-hidden relative">
-      <div className="absolute left-0 top-0 z-10 h-full w-20 bg-gradient-to-r from-background-dark to-transparent" />
-      <div className="absolute right-0 top-0 z-10 h-full w-20 bg-gradient-to-l from-background-dark to-transparent" />
+      <div className="absolute left-0 top-0 z-10 h-full w-20 bg-linear-to-r from-background-dark to-transparent" />
+      <div className="absolute right-0 top-0 z-10 h-full w-20 bg-linear-to-l from-background-dark to-transparent" />
 
       <div className="flex marquee-content w-[200%]">
         {/* First set of skills */}

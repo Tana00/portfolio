@@ -28,16 +28,18 @@ export function ProjectCard({
   const imageWrapper = (
     <motion.div
       variants={itemVariants}
-      className="group relative aspect-[4/3] w-full overflow-hidden rounded-lg bg-surface-dark border border-white/5"
+      className="group relative aspect-4/3 w-full overflow-hidden rounded-lg bg-surface-dark border border-white/5"
     >
       <Image
         src={project.image.src}
         alt={project.image.alt}
         fill
         className="object-cover transition-transform duration-700 group-hover:scale-105"
-        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 50vw"
+        sizes="(max-width: 1024px) 100vw, 560px"
+        quality={75}
         priority={false}
       />
+
       <div className="absolute inset-0 bg-background-dark/20 group-hover:bg-transparent transition-colors duration-500" />
     </motion.div>
   );
