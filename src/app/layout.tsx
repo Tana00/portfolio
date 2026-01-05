@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import { portfolioData } from "@/data/portfolio";
 
@@ -72,6 +73,7 @@ export default function RootLayout({
         className={`${inter.variable} bg-background-dark text-white antialiased selection:bg-primary/30 overflow-x-hidden`}
       >
         {children}
+        <Analytics />
       </body>
     </html>
   );

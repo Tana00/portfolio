@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 
-export const runtime = "nodejs"; // keep it on Node (safe default)
+export const runtime = "nodejs";
 
 type CategoryKey = "performance" | "accessibility" | "best-practices" | "seo";
 
@@ -24,7 +24,7 @@ export async function GET(req: Request) {
     "https://www.googleapis.com/pagespeedonline/v5/runPagespeed"
   );
   api.searchParams.set("url", url);
-  api.searchParams.set("strategy", "mobile");
+  api.searchParams.set("strategy", "desktop");
 
   // repeatable params are allowed (v5 supports multiple category params)
   api.searchParams.append("category", "performance");
@@ -35,7 +35,7 @@ export async function GET(req: Request) {
   api.searchParams.set("key", key);
 
   const res = await fetch(api.toString(), {
-    // you can cache a bit to avoid hammering PSI
+    // cache a bit to avoid hammering PSI
     next: { revalidate: 60 },
   });
 
