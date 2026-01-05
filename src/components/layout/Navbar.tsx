@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { portfolioData } from "@/data/portfolio";
+import { SystemStatusDropdown } from "../ui/SystemStatusDropdown";
 
 export function Navbar() {
   const { name, resumeUrl } = portfolioData.personal;
@@ -31,18 +32,24 @@ export function Navbar() {
           ))}
         </div>
 
-        {/* Resume Button */}
-        <Link
-          href={resumeUrl}
-          className="flex items-center gap-2 rounded border border-white/5 bg-white/5 px-4 py-2 text-sm font-semibold text-white transition-all hover:bg-white/10"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <span className="material-symbols-outlined text-[18px]">
-            download
-          </span>
-          <span className="hidden sm:inline">Resume</span>
-        </Link>
+        <div className="flex items-center gap-3">
+          <SystemStatusDropdown
+            urlToAudit={process.env.NEXT_PUBLIC_APP_URL || ""}
+          />
+
+          {/* Resume Button */}
+          <Link
+            href={resumeUrl}
+            className="flex items-center gap-2 rounded border border-white/5 bg-white/5 px-4 py-2 text-sm font-semibold text-white transition-all hover:bg-white/10"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span className="material-symbols-outlined text-[18px]">
+              download
+            </span>
+            <span className="hidden sm:inline">Resume</span>
+          </Link>
+        </div>
       </div>
     </nav>
   );
