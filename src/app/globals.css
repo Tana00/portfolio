@@ -37,8 +37,16 @@ body {
     transform: translateX(-50%);
   }
 }
-.marquee-content {
+.marquee {
+  display: flex;
+  width: max-content;
   animation: marquee 20s linear infinite;
+}
+
+@media (max-width: 640px) {
+  .marquee {
+    animation-duration: 28s;
+  }
 }
 
 /* swiss grid */
