@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { portfolioData } from "@/data/portfolio";
-import { Icon } from "../ui/Icon";
+import { Icon } from "@/components/ui/Icon";
 
 export function HeroSection() {
   const { hero } = portfolioData;

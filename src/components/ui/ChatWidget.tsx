@@ -19,49 +19,14 @@ function uid() {
   return `${Date.now()}_${Math.random().toString(16).slice(2)}`;
 }
 
-/**
- * Very simple "AI" for now:
- * - routes based on keywords
- * - falls back to a generic helpful response
- * Later you can swap this with a real API call.
- */
-function getAssistantReply(question: string) {
-  const q = question.toLowerCase();
-
-  // Examples — adjust to your portfolio content
-  if (q.includes("tech") || q.includes("stack")) {
-    return (
-      portfolioData.chat.answers?.techStack ??
-      "I specialize in the Modern React Stack: React, Next.js, TypeScript, and Tailwind CSS. I also work a lot with state management and backend integration."
-    );
-  }
-
-  if (q.includes("word") || q.includes("add-in") || q.includes("addin")) {
-    return (
-      portfolioData.chat.answers?.wordAddIn ??
-      "The Word Add-in is a productivity tool that helps users generate structured content inside Word, with UI controls, templates, and consistent formatting."
-    );
-  }
-
-  if (q.includes("saas") || q.includes("conversion")) {
-    return (
-      portfolioData.chat.answers?.saasConversion ??
-      "For SaaS conversion, I focus on modular architecture, tenant-aware auth, billing boundaries, and analytics — while keeping onboarding friction low."
-    );
-  }
-
-  return (
-    portfolioData.chat.answers?.fallback ??
-    "Ask me about a specific project, a skill (React/Next.js), or how I approached a challenge — and I’ll break it down clearly."
-  );
-}
-
 export function ChatWidget() {
   const [isOpen, setIsOpen] = useState(false);
   const [input, setInput] = useState("");
   const [isTyping, setIsTyping] = useState(false);
 
   const createdAt = new Date().getTime();
+
+  const visibleQuestions = portfolioData.chat.suggestedQuestions.slice(0, 3);
 
   // Seed the chat with the greeting once
   const initialMessages = useMemo<ChatMessage[]>(
@@ -96,33 +61,56 @@ export function ChatWidget() {
     const trimmed = text.trim();
     if (!trimmed || isTyping) return;
 
-    // append user message
     const userMsg: ChatMessage = {
       id: uid(),
       role: "user",
       text: trimmed,
-      createdAt: createdAt,
+      createdAt: Date.now(),
     };
+
     setMessages((prev) => [...prev, userMsg]);
     setInput("");
-
-    // fake "typing…"
     setIsTyping(true);
 
-    // Simulate latency so it feels real (remove if you want instant)
-    await new Promise((r) => setTimeout(r, 450));
+    const recent = [...messages, userMsg].slice(-8);
 
-    const replyText = getAssistantReply(trimmed);
+    try {
+      const payload = {
+        messages: recent.map((m) => ({
+          role: m.role,
+          content: m.text,
+        })),
+      };
 
-    const botMsg: ChatMessage = {
-      id: uid(),
-      role: "assistant",
-      text: replyText,
-      createdAt: createdAt,
-    };
+      const res = await fetch("/api/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
 
-    setMessages((prev) => [...prev, botMsg]);
-    setIsTyping(false);
+      const data = await res.json();
+
+      const botMsg: ChatMessage = {
+        id: uid(),
+        role: "assistant",
+        text: data.text ?? "No response received.",
+        createdAt: Date.now(),
+      };
+
+      setMessages((prev) => [...prev, botMsg]);
+    } catch {
+      setMessages((prev) => [
+        ...prev,
+        {
+          id: uid(),
+          role: "assistant",
+          text: "Server error. Please try again.",
+          createdAt: Date.now(),
+        },
+      ]);
+    } finally {
+      setIsTyping(false);
+    }
   };
 
   const onSuggested = (q: string) => {
@@ -220,7 +208,7 @@ export function ChatWidget() {
             {/* Input Area */}
             <div className="border-t border-white/5 bg-surface-dark/50 p-3">
               <div className="mb-3 flex gap-2 overflow-x-auto pb-1 no-scrollbar">
-                {portfolioData.chat.suggestedQuestions.map((q) => (
+                {visibleQuestions.map((q) => (
                   <button
                     key={q}
                     onClick={() => onSuggested(q)}

@@ -2,7 +2,7 @@
 
 import { portfolioData } from "@/data/portfolio";
 import { motion } from "framer-motion";
-import { Icon } from "../ui/Icon";
+import { Icon } from "@/components/ui/Icon";
 
 export function ImpactSection() {
   const { impact } = portfolioData;

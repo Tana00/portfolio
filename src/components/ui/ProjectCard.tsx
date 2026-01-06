@@ -88,7 +88,6 @@ export function ProjectCard({
       </motion.div>
 
       <motion.div variants={itemVariants} className="mt-8 flex gap-4">
-        {/* If you previously used caseStudyUrl, we now use it as a "has case study" flag */}
         {project.caseStudyUrl && onOpenCaseStudy ? (
           <button
             type="button"

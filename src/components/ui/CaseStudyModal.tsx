@@ -1,20 +1,9 @@
 "use client";
 
 import { useState, useEffect, useId } from "react";
-import {
-  Braces,
-  Cloud,
-  Database,
-  ExternalLink,
-  LayoutDashboard,
-  MonitorSmartphone,
-  Network,
-  Server,
-  Workflow,
-  X,
-} from "lucide-react";
+import { ExternalLink, LayoutDashboard, Network, X } from "lucide-react";
 import { Icon } from "./Icon";
-import { IconName } from "../Icons";
+import { IconName } from "@/components/Icons";
 import { ArchitectureData } from "@/types/portfolio";
 import { CaseStudyArchitecture } from "./CaseStudyArchitecture";
 

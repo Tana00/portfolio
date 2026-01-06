@@ -63,7 +63,6 @@ export interface PortfolioData {
     description: string;
     email: string;
     availability: string;
-    resumeUrl: string;
   };
   navigation: {
     links: Array<{

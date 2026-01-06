@@ -3,7 +3,7 @@
 import { Workflow } from "lucide-react";
 import { Icon } from "./Icon";
 import type { ArchitectureData } from "@/types/portfolio";
-import { IconName } from "../Icons";
+import { IconName } from "@/components/Icons";
 
 export function CaseStudyArchitecture({ arch }: { arch: ArchitectureData }) {
   const order = arch.layout.type === "pipeline" ? arch.layout.order : [];
@@ -136,10 +136,6 @@ function ArchitectureEdge({
           {edge.label}
         </div>
       ) : null}
-
-      {/* {edge.ping ? (
-        <div className="absolute left-0 top-1/2 -translate-y-1/2 h-1.5 w-1.5 rounded-full bg-blue-400 animate-[ping_3s_linear_infinite]" />
-      ) : null} */}
     </div>
   );
 }

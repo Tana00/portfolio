@@ -1,7 +1,7 @@
 "use client";
 
 import { portfolioData } from "@/data/portfolio";
-import { Icon } from "../ui/Icon";
+import { Icon } from "@/components/ui/Icon";
 
 export function SkillsSection() {
   const { skills } = portfolioData;

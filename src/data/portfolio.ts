@@ -1,4 +1,5 @@
 import type { PortfolioData } from "@/types/portfolio";
+import { recruiterQuestions } from "@/data/recruiterQuestions";
 
 export const portfolioData: PortfolioData = {
   personal: {
@@ -9,7 +10,6 @@ export const portfolioData: PortfolioData = {
       "I am Happiness Oyinlola, a Senior Frontend Developer bridging the gap between sophisticated design and high-performance engineering.",
     email: "happinessblgn0@gmail.com",
     availability: "Available for new opportunities",
-    resumeUrl: "#", // Update with actual resume URL
   },
   navigation: {
     links: [
@@ -497,11 +497,7 @@ export const portfolioData: PortfolioData = {
   chat: {
     greeting:
       "Hi! I'm an AI assistant trained on Happiness's experience. Ask me anything about her projects or skills.",
-    suggestedQuestions: [
-      "Tell me about the Word Add-in",
-      "Tech stack?",
-      "SaaS conversion?",
-    ],
+    suggestedQuestions: recruiterQuestions,
     answers: {
       techStack:
         "I specialize in React, Next.js, TypeScript, and Tailwind CSS. I also work with state management, API integration, and dashboards/analytics.",

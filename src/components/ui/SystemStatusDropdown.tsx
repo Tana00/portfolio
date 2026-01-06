@@ -64,7 +64,13 @@ function MetricRow({ label, value }: { label: string; value: string }) {
   );
 }
 
-export function SystemStatusDropdown({ urlToAudit }: { urlToAudit: string }) {
+export function SystemStatusDropdown({
+  urlToAudit,
+  closeMobileMenu,
+}: {
+  urlToAudit: string;
+  closeMobileMenu: () => void;
+}) {
   const detailsRef = useRef<HTMLDetailsElement | null>(null);
   const [data, setData] = useState<LighthouseData | null>(null);
   const [loading, setLoading] = useState(false);
@@ -129,7 +135,9 @@ export function SystemStatusDropdown({ urlToAudit }: { urlToAudit: string }) {
     if (!el) return;
 
     const onToggle = () => {
-      if (el.open && !data && !loading) fetchData();
+      if (el.open && !data && !loading) {
+        fetchData();
+      }
     };
 
     const onKeyDown = (e: KeyboardEvent) => {
@@ -158,8 +166,14 @@ export function SystemStatusDropdown({ urlToAudit }: { urlToAudit: string }) {
   }, [data, loading]);
 
   return (
-    <details ref={detailsRef} className="relative group">
-      <summary className="list-none cursor-pointer outline-none">
+    <details ref={detailsRef} className="sm:relative group">
+      <summary
+        onClick={() => {
+          // close drawer when Status is tapped
+          closeMobileMenu?.();
+        }}
+        className="list-none cursor-pointer outline-none"
+      >
         <div className="flex items-center gap-2 rounded-full border border-white/5 bg-white/5 px-3 py-1.5 text-xs font-medium text-text-dim hover:bg-white/10 hover:text-white transition-all ring-1 ring-transparent focus:ring-accent-blue/50">
           <span className="relative flex h-2 w-2">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent-blue opacity-75" />
@@ -170,7 +184,7 @@ export function SystemStatusDropdown({ urlToAudit }: { urlToAudit: string }) {
         </div>
       </summary>
 
-      <div className="absolute right-0 top-full mt-4 w-90 sm:w-105 origin-top-right rounded-xl border border-white/10 bg-background-dark/90 p-6 shadow-2xl backdrop-blur-xl ring-1 ring-white/10 z-[100]">
+      <div className="absolute right-0 top-full mt-4 w-full sm:w-105 origin-top-right rounded-xl border border-white/10 bg-background-dark/95 p-6 shadow-2xl backdrop-blur-xl ring-1 ring-white/10 z-100">
         <div className="flex items-center justify-between mb-6">
           <div className="flex items-center gap-2">
             <Gauge size={20} strokeWidth={2.75} className="text-accent-blue" />
