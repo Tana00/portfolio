@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://happiness.dev",
+    url: "https://happinessoyinlola.vercel.app/",
     title: `${portfolioData.personal.name} | ${portfolioData.personal.title}`,
     description: portfolioData.personal.description,
     siteName: portfolioData.personal.name,
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
-  metadataBase: new URL("https://happiness.dev"),
+  metadataBase: new URL("https://happinessoyinlola.vercel.app/"),
 };
 
 export const viewport = {

@@ -89,8 +89,12 @@ export interface PortfolioData {
   contact: {
     heading: string;
     subheading: string;
-    cta: string;
-    ctaUrl: string;
+    cta: {
+      variant: "primary" | "secondary";
+      label: string;
+      href: string;
+      icon: IconName;
+    }[];
   };
   footer: {
     copyright: string;

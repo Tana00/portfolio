@@ -179,8 +179,8 @@ export function SystemStatusDropdown({
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent-blue opacity-75" />
             <span className="relative inline-flex rounded-full h-2 w-2 bg-accent-blue" />
           </span>
-          <span className="hidden sm:inline">System Status</span>
-          <span className="sm:hidden">Status</span>
+          <span className="hidden lg:inline">System Status</span>
+          <span className="lg:hidden">Status</span>
         </div>
       </summary>
 

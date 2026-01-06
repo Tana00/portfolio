@@ -26,7 +26,9 @@ export function ChatWidget() {
 
   const createdAt = new Date().getTime();
 
-  const visibleQuestions = portfolioData.chat.suggestedQuestions.slice(0, 3);
+  const visibleQuestions = [...portfolioData.chat.suggestedQuestions]
+    .sort(() => Math.random() - 0.5)
+    .slice(0, 3);
 
   // Seed the chat with the greeting once
   const initialMessages = useMemo<ChatMessage[]>(

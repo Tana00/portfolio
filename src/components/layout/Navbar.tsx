@@ -34,7 +34,7 @@ export function Navbar() {
           <div className="flex h-8 w-8 items-center justify-center rounded bg-primary/20 text-primary">
             <Image src="/logo.png" alt="Logo" width={40} height={30} />
           </div>
-          <span className="font-bold tracking-tight text-white hidden sm:inline">
+          <span className="font-bold tracking-tight text-white text-sm sm:text-base">
             {name}
           </span>
         </Link>

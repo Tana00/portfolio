@@ -1,5 +1,6 @@
 import type { PortfolioData } from "@/types/portfolio";
 import { recruiterQuestions } from "@/data/recruiterQuestions";
+import { contactPreference } from "@/data/contactPreference";
 
 export const portfolioData: PortfolioData = {
   personal: {
@@ -8,7 +9,7 @@ export const portfolioData: PortfolioData = {
     headline: "Building user-centric, scalable web applications",
     description:
       "I am Happiness Oyinlola, a Senior Frontend Developer bridging the gap between sophisticated design and high-performance engineering.",
-    email: "happinessblgn0@gmail.com",
+    email: contactPreference.email,
     availability: "Available for new opportunities",
   },
   navigation: {
@@ -481,8 +482,20 @@ export const portfolioData: PortfolioData = {
     heading: "Ready to build the future?",
     subheading:
       "Currently available for select freelance opportunities and senior roles. Let's discuss how we can elevate your product.",
-    cta: "Get in Touch",
-    ctaUrl: "mailto:hello@happiness.dev",
+    cta: [
+      {
+        variant: "primary",
+        label: "Get in Touch",
+        href: `mailto:${contactPreference.email}`,
+        icon: "mail",
+      },
+      {
+        variant: "secondary",
+        label: "Schedule a Call",
+        href: contactPreference.scheduler.url,
+        icon: "calendar",
+      },
+    ],
   },
   footer: {
     copyright: "© 2024 Happiness Oyinlola. All rights reserved.",

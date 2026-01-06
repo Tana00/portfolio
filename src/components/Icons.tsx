@@ -21,6 +21,8 @@ import {
   ArrowDown,
   MonitorSmartphone,
   Cloud,
+  Mail,
+  Calendar,
 } from "lucide-react";
 
 export const ICONS = {
@@ -46,6 +48,8 @@ export const ICONS = {
   arrow_down: ArrowDown,
   monitor_smartphone: MonitorSmartphone,
   cloud: Cloud,
+  mail: Mail,
+  calendar: Calendar,
 };
 
 export type IconName = keyof typeof ICONS;

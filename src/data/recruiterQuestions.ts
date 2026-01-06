@@ -9,4 +9,7 @@ export const recruiterQuestions = [
   "How do you ensure code quality and prevent regressions?",
   "What's a challenging integration you've worked on?",
   "What kind of role are you looking for next?",
+  "How can I contact you?",
+  "Are you open to remote or hybrid roles?",
+  "Can I book a call?",
 ];

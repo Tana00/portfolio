@@ -3,10 +3,10 @@
 import Link from "next/link";
 import { portfolioData } from "@/data/portfolio";
 import { motion } from "framer-motion";
-import { Mail } from "lucide-react";
+import { Icon } from "../ui/Icon";
 
 export function ContactSection() {
-  const { heading, subheading, cta, ctaUrl } = portfolioData.contact;
+  const { heading, subheading, cta } = portfolioData.contact;
 
   return (
     <section
@@ -30,15 +30,26 @@ export function ContactSection() {
           <p className="mx-auto mt-6 max-w-2xl text-lg text-text-dim">
             {subheading}
           </p>
-          <div className="mt-10 flex justify-center gap-6">
-            <Link
-              href={ctaUrl}
-              className="flex items-center gap-2 rounded bg-primary px-8 py-4 text-base font-bold text-white shadow-lg hover:bg-blue-600 transition-colors"
-              aria-label="Send email"
-            >
-              <Mail className="h-5 w-5" />
-              {cta}
-            </Link>
+          <div className="mt-10 flex flex-col md:flex-row items-center justify-center gap-6">
+            {cta.map((item, index) => (
+              <Link
+                key={index}
+                href={item.href}
+                className={`flex items-center gap-2 rounded px-8 py-4 text-base font-bold text-white shadow-lg ${
+                  item.variant === "primary"
+                    ? "bg-primary hover:bg-blue-600 transition-colors"
+                    : "text-text-dim bg-background-dark border border-white/10 hover:border-primary/50 hover:bg-white/5 transition-all group"
+                }`}
+                aria-label={item.label}
+                target="_blank"
+              >
+                <Icon
+                  name={item.icon}
+                  className="h-5 w-5 group-hover:text-primary transition-colors"
+                />
+                {item.label}
+              </Link>
+            ))}
           </div>
         </motion.div>
       </div>
