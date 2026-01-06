@@ -500,5 +500,15 @@ export const portfolioData: PortfolioData = {
       "Tech stack?",
       "SaaS conversion?",
     ],
+    answers: {
+      techStack:
+        "I specialize in React, Next.js, TypeScript, and Tailwind CSS. I also work with state management, API integration, and dashboards/analytics.",
+      wordAddIn:
+        "The Word Add-in helps users generate structured content directly inside Word with templates and smart formatting.",
+      saasConversion:
+        "For SaaS conversion, I focus on tenancy boundaries, auth, modular services, analytics, and a smooth onboarding experience.",
+      fallback:
+        "Ask me about a project, your preferred stack, or a specific challenge — I’ll explain it clearly.",
+    },
   },
 };

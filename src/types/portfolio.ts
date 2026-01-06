@@ -103,6 +103,7 @@ export interface PortfolioData {
   chat: {
     greeting: string;
     suggestedQuestions: string[];
+    answers: Record<string, string>;
   };
 }
 

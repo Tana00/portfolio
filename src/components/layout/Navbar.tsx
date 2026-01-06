@@ -41,10 +41,10 @@ export function Navbar() {
 
           {/* Resume Button */}
           <Link
-            href={resumeUrl}
+            href="/Happiness_Oyinlola_cv.pdf"
             className="flex items-center gap-2 rounded border border-white/5 bg-white/5 px-4 py-2 text-sm font-semibold text-white transition-all hover:bg-white/10"
-            target="_blank"
             rel="noopener noreferrer"
+            download
           >
             <Download className="h-4 w-4" />
             <span className="hidden sm:inline">Resume</span>
