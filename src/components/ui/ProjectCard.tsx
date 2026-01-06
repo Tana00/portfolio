@@ -35,7 +35,7 @@ export function ProjectCard({
         src={project.image.src}
         alt={project.image.alt}
         fill
-        className="object-cover transition-transform duration-700 group-hover:scale-105"
+        className="object-contain transition-transform duration-700 group-hover:scale-105"
         sizes="(max-width: 1024px) 100vw, 560px"
         quality={75}
         priority={false}

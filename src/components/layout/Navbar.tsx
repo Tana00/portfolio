@@ -1,7 +1,8 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
-import { Code, Download } from "lucide-react";
+import { Download } from "lucide-react";
 import { portfolioData } from "@/data/portfolio";
 import { SystemStatusDropdown } from "../ui/SystemStatusDropdown";
 
@@ -15,7 +16,7 @@ export function Navbar() {
         {/* Logo and Brand */}
         <div className="flex items-center gap-2">
           <div className="flex h-8 w-8 items-center justify-center rounded bg-primary/20 text-primary">
-            <Code className="w-5 h-5" />
+            <Image src="/logo.png" alt="Logo" width={40} height={30} />
           </div>
           <span className="font-bold tracking-tight text-white">{name}</span>
         </div>

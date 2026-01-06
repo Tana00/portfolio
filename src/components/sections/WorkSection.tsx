@@ -42,6 +42,7 @@ export function WorkSection() {
 
       closingText: selected.caseStudy?.closingText,
       liveUrl: selected.caseStudy?.liveUrl ?? "#",
+      architecture: selected.caseStudy?.architecture,
     };
   }, [selected]);
 

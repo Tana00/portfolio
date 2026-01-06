@@ -143,6 +143,61 @@ export const portfolioData: PortfolioData = {
         closingText:
           "Implemented NextAuth social login (Google/GitHub), GitHub/Bitbucket deployment flows, database + Redis creation UI, REST API integration with Axios + React Hook Form validation, reusable component patterns, performance optimization, and a testing baseline using React Testing Library.",
         liveUrl: "https://clouddley.com/",
+        architecture: {
+          badgeLabel: "System Architecture",
+          layout: {
+            type: "pipeline",
+            order: ["client", "api", "cloud"],
+          },
+          nodes: [
+            {
+              id: "client",
+              title: "Client (React)",
+              subtitle: "Next.js Frontend",
+              icon: "monitor_smartphone",
+              iconColorClass: "text-blue-400",
+              hoverBorderClass: "hover:border-primary/50",
+              tooltip: {
+                title: "State Management Strategy",
+                body: "Redux Toolkit for global state, local component state for UI interactions.",
+              },
+            },
+            {
+              id: "api",
+              title: "API Gateway",
+              subtitle: "RESTful Services",
+              icon: "braces",
+              iconColorClass: "text-purple-400",
+              hoverBorderClass: "hover:border-purple-500/50",
+              tooltip: {
+                title: "API Optimization",
+                body: "Edge caching & rate limiting implemented to handle high concurrent requests.",
+              },
+            },
+            {
+              id: "cloud",
+              title: "Cloud Services",
+              subtitle: "AWS / GCP / Azure",
+              icon: "cloud",
+              iconColorClass: "text-green-400",
+            },
+          ],
+          edges: [
+            {
+              from: "client",
+              to: "api",
+              label: "JSON/HTTPS",
+              gradientClass: "from-blue-500/50 to-purple-500/50",
+              ping: true,
+            },
+            {
+              from: "api",
+              to: "cloud",
+              label: "Query",
+              gradientClass: "from-purple-500/50 to-green-500/50",
+            },
+          ],
+        },
       },
     },
 

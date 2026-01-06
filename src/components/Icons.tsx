@@ -19,6 +19,8 @@ import {
   ScalingIcon,
   ArrowUp,
   ArrowDown,
+  MonitorSmartphone,
+  Cloud,
 } from "lucide-react";
 
 export const ICONS = {
@@ -42,6 +44,8 @@ export const ICONS = {
   scaling: ScalingIcon,
   arrow_up: ArrowUp,
   arrow_down: ArrowDown,
+  monitor_smartphone: MonitorSmartphone,
+  cloud: Cloud,
 };
 
 export type IconName = keyof typeof ICONS;

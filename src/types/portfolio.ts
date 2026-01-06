@@ -37,6 +37,7 @@ export interface Project {
     }>;
     closingText?: string;
     liveUrl?: string;
+    architecture?: ArchitectureData;
   };
 }
 
@@ -104,3 +105,38 @@ export interface PortfolioData {
     suggestedQuestions: string[];
   };
 }
+
+export type ArchitectureNodeId = string;
+
+export type ArchitectureNode = {
+  id: ArchitectureNodeId;
+  title: string;
+  subtitle?: string;
+  icon?: IconName; // uses Icon component
+  iconColorClass?: string;
+  hoverBorderClass?: string;
+  tooltip?: {
+    title?: string;
+    body: string;
+  };
+};
+
+export type ArchitectureEdge = {
+  from: ArchitectureNodeId;
+  to: ArchitectureNodeId;
+  label?: string; // "JSON/HTTPS"
+  gradientClass?: string;
+  ping?: boolean; // show little ping dot animation
+};
+
+export type ArchitecturePipelineLayout = {
+  type: "pipeline";
+  order: ArchitectureNodeId[]; // node ids in order
+};
+
+export type ArchitectureData = {
+  badgeLabel?: string; // "System Architecture"
+  layout: ArchitecturePipelineLayout;
+  nodes: ArchitectureNode[];
+  edges: ArchitectureEdge[];
+};
