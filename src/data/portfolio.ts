@@ -487,9 +487,11 @@ export const portfolioData: PortfolioData = {
   footer: {
     copyright: "© 2024 Happiness Oyinlola. All rights reserved.",
     socials: [
-      { name: "LinkedIn", href: "#" },
-      { name: "GitHub", href: "#" },
-      { name: "Twitter", href: "#" },
+      {
+        name: "LinkedIn",
+        href: "https://www.linkedin.com/in/happinessbalogun/",
+      },
+      { name: "GitHub", href: "https://github.com/Tana00" },
     ],
   },
   chat: {

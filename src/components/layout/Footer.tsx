@@ -2,11 +2,7 @@
 
 import Link from "next/link";
 import { portfolioData } from "@/data/portfolio";
-import {
-  LinkedInIcon,
-  GitHubIcon,
-  TwitterIcon,
-} from "@/components/ui/SocialIcons";
+import { LinkedInIcon, GitHubIcon } from "@/components/ui/SocialIcons";
 
 export function Footer() {
   const { copyright, socials } = portfolioData.footer;
@@ -14,7 +10,6 @@ export function Footer() {
   const socialIconMap: Record<string, React.ReactNode> = {
     LinkedIn: <LinkedInIcon />,
     GitHub: <GitHubIcon />,
-    Twitter: <TwitterIcon />,
   };
 
   return (
@@ -30,6 +25,7 @@ export function Footer() {
                   href={social.href}
                   className="text-text-dim transition-colors hover:text-primary"
                   aria-label={social.name}
+                  target="_blank"
                 >
                   <span className="sr-only">{social.name}</span>
                   {socialIconMap[social.name] || (
