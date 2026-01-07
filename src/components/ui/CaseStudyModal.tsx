@@ -34,6 +34,7 @@ export type CaseStudyData = {
   }>;
   closingText?: string;
   liveUrl?: string;
+  btnLabel?: string;
   architecture?: ArchitectureData;
 };
 
@@ -68,7 +69,7 @@ export function CaseStudyModal({ open, onClose, data }: Props) {
 
   return (
     <div
-      className="fixed overflow-auto inset-0 z-100 flex items-center justify-center bg-background-dark/60 backdrop-blur-md p-4"
+      className="fixed overflow-auto inset-0 z-50 flex items-center justify-center bg-background-dark/60 backdrop-blur-md p-4"
       role="dialog"
       aria-modal="true"
       aria-labelledby={titleId}
@@ -253,7 +254,8 @@ export function CaseStudyModal({ open, onClose, data }: Props) {
                 target="_blank"
                 rel="noreferrer"
               >
-                Visit Live Site
+                {data.btnLabel || "Visit Live Site"}
+                {/* Visit Live Site */}
                 <ExternalLink size={18} />
               </a>
             </div>

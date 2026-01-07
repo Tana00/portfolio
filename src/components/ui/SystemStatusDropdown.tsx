@@ -184,7 +184,7 @@ export function SystemStatusDropdown({
         </div>
       </summary>
 
-      <div className="absolute right-0 top-full mt-4 w-full sm:w-105 origin-top-right rounded-xl border border-white/10 bg-background-dark/95 p-6 shadow-2xl backdrop-blur-xl ring-1 ring-white/10 z-100">
+      <div className="absolute right-0 top-full mt-4 w-full sm:w-105 origin-top-right rounded-xl border border-white/10 bg-background-dark/95 p-6 shadow-2xl backdrop-blur-xl ring-1 ring-white/10 z-50">
         <div className="flex items-center justify-between mb-6">
           <div className="flex items-center gap-2">
             <Gauge size={20} strokeWidth={2.75} className="text-accent-blue" />

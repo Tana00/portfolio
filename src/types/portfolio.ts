@@ -37,6 +37,7 @@ export interface Project {
     }>;
     closingText?: string;
     liveUrl?: string;
+    btnLabel?: string;
     architecture?: ArchitectureData;
   };
 }

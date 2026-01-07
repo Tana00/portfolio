@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { ArrowRight } from "lucide-react";
 import { portfolioData } from "@/data/portfolio";
 import { ProjectCard } from "@/components/ui/ProjectCard";
 import {
@@ -8,6 +9,7 @@ import {
   type CaseStudyData,
 } from "@/components/ui/CaseStudyModal";
 import type { Project } from "@/types/portfolio";
+import Link from "next/link";
 
 export function WorkSection() {
   const { projects } = portfolioData;
@@ -42,6 +44,7 @@ export function WorkSection() {
 
       closingText: selected.caseStudy?.closingText,
       liveUrl: selected.caseStudy?.liveUrl ?? "#",
+      btnLabel: selected.caseStudy?.btnLabel,
       architecture: selected.caseStudy?.architecture,
     };
   }, [selected]);
@@ -78,14 +81,28 @@ export function WorkSection() {
         </div>
 
         <div className="flex flex-col gap-24">
-          {projects.map((project, index) => (
+          {projects.slice(0, 2).map((project, index) => (
             <ProjectCard
               key={project.id}
               project={project}
               imagePosition={index % 2 === 0 ? "left" : "right"}
               onOpenCaseStudy={openCaseStudy}
+              variant="feature"
             />
           ))}
+        </div>
+
+        <div className="mt-20 flex w-full justify-center">
+          <Link
+            className="group flex items-center gap-2 rounded border border-accent-blue/30 bg-accent-blue/10 px-10 py-4 text-sm font-semibold text-accent-blue backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:bg-accent-blue hover:text-white hover:shadow-lg hover:shadow-accent-blue/25"
+            href="/projects"
+          >
+            <span>View All Projects</span>
+            <ArrowRight
+              size={18}
+              className="transition-transform duration-300 group-hover:translate-x-1"
+            />
+          </Link>
         </div>
       </section>
 

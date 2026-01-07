@@ -14,8 +14,8 @@ export const portfolioData: PortfolioData = {
   },
   navigation: {
     links: [
-      { label: "Work", href: "#work" },
-      { label: "Impact", href: "#impact" },
+      { label: "Work", href: "/#work" },
+      { label: "Impact", href: "/#impact" },
       { label: "Contact", href: "#contact" },
     ],
   },
@@ -210,9 +210,9 @@ export const portfolioData: PortfolioData = {
       description:
         "Built a consumer lifestyle web app for food ordering and service booking, plus a responsive merchant dashboard for uploads and order tracking. Focused on real-time updates, payments, monitoring, experimentation, and safe rollouts.",
       image: {
-        src: "/projects/settl-hero.png",
+        src: "/projects/settl-merchant-dashboard.png",
         alt: "Marketplace web app interface with dashboards",
-        caption: "Hero Section",
+        caption: "Merchant Dashboard",
       },
       tags: [
         "Next.js",
@@ -245,14 +245,14 @@ export const portfolioData: PortfolioData = {
         ],
         images: [
           {
-            src: "/projects/settl-merchant-dashboard.png",
-            alt: "Merchant dashboard UI for order tracking",
-            caption: "Merchant Dashboard",
-          },
-          {
             src: "/projects/settl-merchant-signup.png",
             alt: "Merchant signup flow interface",
             caption: "Merchant Signup",
+          },
+          {
+            src: "/projects/settl-hero.png",
+            alt: "Merchant dashboard UI for order tracking",
+            caption: "Hero Section",
           },
         ],
         closingText:
@@ -290,17 +290,17 @@ export const portfolioData: PortfolioData = {
           {
             value: "✓",
             label: "Legacy UI Modernized",
-            trendIcon: "arrow_down",
+            trendIcon: "arrow_up",
           },
           {
             value: "✓",
             label: "CI/CD Pipelines Implemented",
-            trendIcon: "arrow_down",
+            trendIcon: "arrow_up",
           },
           {
             value: "✓",
             label: "Performance Improved via Lighthouse",
-            trendIcon: "arrow_down",
+            trendIcon: "arrow_up",
           },
         ],
         images: [
@@ -347,7 +347,7 @@ export const portfolioData: PortfolioData = {
           {
             value: "✓",
             label: "Compliance-Driven Automation",
-            trendIcon: "arrow_down",
+            trendIcon: "arrow_up",
           },
         ],
         images: [
@@ -366,6 +366,7 @@ export const portfolioData: PortfolioData = {
           "Built the add-in using Office JavaScript APIs with a React UI, automating repetitive stamp/seal actions to reduce manual steps and errors for legal teams.",
         liveUrl:
           "https://www.loom.com/share/4fddc51e64074fb79fa5d57a8a9dd555?sid=5cb40411-0a0e-4492-9335-edf09aa3436b",
+        btnLabel: "Watch Demo Video",
       },
     },
 

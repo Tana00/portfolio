@@ -3,6 +3,9 @@ import { Inter } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import { portfolioData } from "@/data/portfolio";
+import { Navbar } from "@/components/layout/Navbar";
+import { Footer } from "@/components/layout/Footer";
+import { ChatWidget } from "@/components/ui/ChatWidget";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -68,7 +71,16 @@ export default function RootLayout({
       <body
         className={`${inter.variable} bg-background-dark text-white antialiased selection:bg-primary/30 overflow-x-hidden`}
       >
-        {children}
+        <div className="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+          <Navbar />
+          {children}
+          <Footer />
+
+          {/* Chat Widget - Fixed position */}
+          <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-4">
+            <ChatWidget />
+          </div>
+        </div>
         <Analytics />
       </body>
     </html>
